@@ -1,0 +1,17 @@
+kind: Route
+apiVersion: route.openshift.io/v1
+metadata:
+  name: trello
+spec:
+  host: trello-board.apps.demo03.ocp03.demo
+  to:
+    kind: Service
+    name: projectmgmt-app
+    weight: 100
+  port:
+    targetPort: 3000
+  tls:
+    termination: edge
+    insecureEdgeTerminationPolicy: Allow
+  wildcardPolicy: None
+

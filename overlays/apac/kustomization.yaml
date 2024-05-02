@@ -1,0 +1,13 @@
+kind: Kustomization
+bases:
+  - ../../base
+
+nameSuffix: -apac
+
+images:
+ - name: projectmgmt-app
+   newName: quay.io/psarvaiya/trello
+   newTag: v1
+
+resources:
+- route.yaml

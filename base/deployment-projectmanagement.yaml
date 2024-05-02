@@ -1,0 +1,40 @@
+kind: Deployment
+apiVersion: apps/v1
+metadata:
+  name: projectmgmt-app
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: projectmgmt-app
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        app: projectmgmt-app
+    spec:
+      containers:
+        - name: projectmgmt-app
+          image: 'quay.io/psarvaiya/trello:v1'
+          ports:
+            - containerPort: 3000
+              protocol: TCP
+          env:
+            - name: DATABASE_URL
+              value: 'postgres://postgres:postgres@projectmgmt-db:5432/projectmgmt'
+            - name: NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY
+              value: pk_test_bWlnaHR5LWJpc29uLTg0LmNsZXJrLmFjY291bnRzLmRldiQ
+            - name: CLERK_SECRET_KEY
+              value: sk_test_oQqlnPb4Je9Pfs7zG57ahj6M9lMnz7O2dWukJZlYe3
+            - name: NEXT_PUBLIC_CLERK_SIGN_IN_URL
+              value: /sign-in
+            - name: NEXT_PUBLIC_CLERK_SIGN_UP_URL
+              value: /sign-up
+            - name: NEXT_PUBLIC_CLERK_AFTER_SIGN_IN_URL
+              value: /
+            - name: NEXT_PUBLIC_CLERK_AFTER_SIGN_UP_URL
+              value: /
+            - name: NEXT_PUBLIC_UNSPLASH_ACCESS_KEY
+              value: 2ZTxf8TwfQ0JWeBqykEZWqLy9mYmzTQCOP5tDTs3gdE
+      serviceAccountName: projectmgmt-app-sa
+      serviceAccount: projectmgmt-app-sa

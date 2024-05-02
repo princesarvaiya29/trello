@@ -1,0 +1,37 @@
+kind: Deployment
+apiVersion: apps/v1
+metadata:
+  name: projectmgmt-db
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: projectmgmt-db
+  template:
+    metadata:
+      labels:
+        app: projectmgmt-db
+    spec:
+      restartPolicy: Always
+      serviceAccountName: postgres-sa
+      containers:
+        - name: postgres
+          image: 'quay.io/psarvaiya/postgres:15'
+          ports:
+            - containerPort: 5432
+              protocol: TCP
+          env:
+            - name: POSTGRES_USER
+              value: postgres
+            - name: POSTGRES_PASSWORD
+              value: postgres
+            - name: POSTGRES_DB
+              value: projectmgmt
+            - name: PGUSER
+              value: postgres
+      serviceAccount: postgres-sa
+      volumes:
+        - name: postgres-storage
+          persistentVolumeClaim:
+            claimName: postgres-pvc
+

@@ -1,0 +1,15 @@
+kind: Kustomization
+resources:
+- pvc.yaml
+- service-account-projectmanagement.yaml
+- service-account-projectmanagement-postgres.yaml
+- rbac-projectmanagement.yaml
+- rbac-projectmanagement-postgres.yaml
+- service-projectmanagement.yaml
+- service-projectmanagement-postgres.yaml
+- deployment-projectmanagement.yaml
+- deployment-projectmanagement-postgres.yaml
+
+
+
+
