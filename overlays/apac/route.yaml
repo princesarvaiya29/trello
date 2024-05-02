@@ -6,7 +6,7 @@ spec:
   host: trello-board.apps.demo02.ocp02.demo
   to:
     kind: Service
-    name: projectmgmt-app
+    name: projectmgmt-app-apac
     weight: 100
   port:
     targetPort: 3000
