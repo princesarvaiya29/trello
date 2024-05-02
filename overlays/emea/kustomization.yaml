@@ -5,7 +5,7 @@ bases:
 nameSuffix: -emea
 
 images:
- - name: projectmgmt-app
+ - name: quay.io/psarvaiya/trello
    newName: quay.io/psarvaiya/trello
    newTag: v1
 
