@@ -3,7 +3,7 @@ apiVersion: route.openshift.io/v1
 metadata:
   name: trello
 spec:
-  host: trello-board.apps.demo02.ocp02.demo
+  host: trello-board.apps.dev03.ocp.dev03
   to:
     kind: Service
     name: projectmgmt-app-apac
